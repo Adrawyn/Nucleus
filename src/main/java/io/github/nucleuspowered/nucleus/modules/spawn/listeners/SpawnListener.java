@@ -13,8 +13,9 @@ import io.github.nucleuspowered.nucleus.internal.interfaces.Reloadable;
 import io.github.nucleuspowered.nucleus.internal.permissions.PermissionInformation;
 import io.github.nucleuspowered.nucleus.internal.permissions.SuggestedLevel;
 import io.github.nucleuspowered.nucleus.internal.teleport.NucleusTeleportHandler;
+import io.github.nucleuspowered.nucleus.internal.traits.IDataManagerTrait;
 import io.github.nucleuspowered.nucleus.internal.traits.MessageProviderTrait;
-import io.github.nucleuspowered.nucleus.modules.core.datamodules.CoreUserDataModule;
+import io.github.nucleuspowered.nucleus.modules.core.CoreKeys;
 import io.github.nucleuspowered.nucleus.modules.spawn.config.GlobalSpawnConfig;
 import io.github.nucleuspowered.nucleus.modules.spawn.config.SpawnConfig;
 import io.github.nucleuspowered.nucleus.modules.spawn.config.SpawnConfigAdapter;
@@ -40,7 +41,7 @@ import java.util.UUID;
 
 import javax.annotation.Nullable;
 
-public class SpawnListener implements Reloadable, ListenerBase, MessageProviderTrait {
+public class SpawnListener implements Reloadable, ListenerBase, MessageProviderTrait, IDataManagerTrait {
 
     private SpawnConfig spawnConfig;
 
@@ -56,7 +57,7 @@ public class SpawnListener implements Reloadable, ListenerBase, MessageProviderT
     @Listener
     public void onJoin(ClientConnectionEvent.Login loginEvent) {
         UUID pl = loginEvent.getProfile().getUniqueId();
-        boolean first = !Nucleus.getNucleus().getUserDataManager().getUnchecked(pl).get(CoreUserDataModule.class).getFirstJoin().isPresent();
+        boolean first = getOrCreateUserOnThread(pl).get(CoreKeys.FIRST_JOIN).isPresent();
 
         try {
             if (first) {

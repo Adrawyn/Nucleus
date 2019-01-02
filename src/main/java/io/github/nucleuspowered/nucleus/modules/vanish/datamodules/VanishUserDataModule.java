@@ -5,10 +5,9 @@
 package io.github.nucleuspowered.nucleus.modules.vanish.datamodules;
 
 import io.github.nucleuspowered.nucleus.dataservices.modular.DataKey;
-import io.github.nucleuspowered.nucleus.dataservices.modular.DataModule;
-import io.github.nucleuspowered.nucleus.dataservices.modular.ModularUserService;
+import io.github.nucleuspowered.nucleus.storage.dataobjects.modules.IUserDataModule;
 
-public class VanishUserDataModule extends DataModule<ModularUserService> {
+public class VanishUserDataModule implements IUserDataModule {
 
     @DataKey("vanish")
     private boolean vanish = false;
