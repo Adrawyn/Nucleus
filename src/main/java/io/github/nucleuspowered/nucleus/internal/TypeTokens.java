@@ -20,6 +20,8 @@ public final class TypeTokens {
 
     public static final TypeToken<LocationNode> LOCATION_NODE = TypeToken.of(LocationNode.class);
 
+    public static final TypeToken<Integer> INTEGER = TypeToken.of(int.class);
+
     public static final TypeToken<Long> LONG = TypeToken.of(long.class);
 
     public static final TypeToken<String> STRING = TypeToken.of(String.class);
