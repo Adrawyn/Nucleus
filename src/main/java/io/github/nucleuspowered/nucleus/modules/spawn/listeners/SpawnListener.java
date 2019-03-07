@@ -62,7 +62,8 @@ public class SpawnListener implements Reloadable, ListenerBase, MessageProviderT
         try {
             if (first) {
                 // first spawn.
-                Optional<Transform<World>> ofs = Nucleus.getNucleus().getGeneralService().get(SpawnGeneralDataModule.class).getFirstSpawn();
+                Optional<Transform<World>> ofs =
+                        Nucleus.getNucleus().getStorageManager().getGeneralService().get(SpawnGeneralDataModule.class).getFirstSpawn();
 
                 // Bit of an odd line, but what what is going on here is checking for first spawn, and if it exists, then
                 // setting the location the player safely. If this cannot be done in either case, send them to world spawn.

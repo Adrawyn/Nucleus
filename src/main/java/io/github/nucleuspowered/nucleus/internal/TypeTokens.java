@@ -8,7 +8,9 @@ import com.google.common.reflect.TypeToken;
 import io.github.nucleuspowered.nucleus.configurate.datatypes.LocationNode;
 
 import java.time.Instant;
+import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 public final class TypeTokens {
 
@@ -23,4 +25,6 @@ public final class TypeTokens {
     public static final TypeToken<String> STRING = TypeToken.of(String.class);
 
     public static final TypeToken<Map<String, LocationNode>> LOCATIONS = new TypeToken<Map<String, LocationNode>>() {};
+
+    public static final TypeToken<List<UUID>> UUID_LIST = new TypeToken<List<UUID>>() {};
 }
